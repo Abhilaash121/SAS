@@ -1,0 +1,37 @@
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+    <!--Table-->
+    
+        <div class="card">
+            <div class="card-body">
+                <table class="table bg-white">
+                    <thead class="bg-info text-white">
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Category</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Cost per Item</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for product in products %}
+                        <tr>
+                            <td>{{ product.name }}</td>
+                            <td>{{ product.category }}</td>
+                            <td>{{ product.quantity }}</td>
+                            <td>{{ product.cost_per_item }}</td>
+                        
+                        </tr>
+                        {% endfor %}            
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    
+
+
+
+    <!--End Table-->
+{% endblock %}

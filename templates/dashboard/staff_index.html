@@ -1,0 +1,66 @@
+{% load crispy_forms_tags %}
+
+<div class="container">
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    Make Request
+                </div>
+                <div class="card-body">
+                    <form method="POST">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        <input class="btn btn-info btn-block" type="submit" value="Place Order">
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-6">
+            
+            <div class="card">
+                <div class="card-header">
+                    Products
+                </div>
+                <div class="card-body">
+                    {% include 'dashboard/staff_product.html' %}
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    Orders Records
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <thead class="thead-info">
+                            <tr>
+                                <th scope="col">Product</th>
+                                <th scope="col">Category</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col">Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for order in orders %}
+                            {% if order.staff == user %}
+                            <tr>
+                                <td>{{ order.product.name }}</td>
+                                <td>{{ order.product.category }}</td>
+                                <td>{{ order.order_quantity }}</td>
+                                <td>{{ order.date }}</td>
+                            </tr>
+                            {% endif %}
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

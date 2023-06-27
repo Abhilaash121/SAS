@@ -1,0 +1,65 @@
+{% extends 'partials/base.html' %}
+{% block title %}Order Page{% endblock %}
+
+{% block content %}
+{% include 'partials/topnav.html' %}
+    <!--Table-->
+    <div class="container">
+        <div class="row my-4">
+            <div class="col-md-4">
+
+            </div>
+            <div class="col-md-8">
+                <table class="table bg-white">
+                    <thead class="bg-info">
+                        <tr class="text-white">
+                            <th scope="col">Product</th>
+                            <th scope="col">Category</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Order by</th>
+                            <th scope="col">Per Item</th>
+                            <th scope="col">Sale</th>
+                            <th scope="col">Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for orders in orders %}
+                        <tr>
+                            <td>{{orders.product}}</td>
+                            <td>{{orders.product.category}}</td>
+                            <td>{{orders.order_quantity}}</td>
+                            <td>
+                                {{orders.staff.username}}
+                            </td>
+                            <td>{{orders.product.cost_per_item}}</td>
+                            <td>
+                                {{orders.sale}}
+                            </td>
+                            <td>
+                                {{orders.date}}
+                            </td>
+                        
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+                <div class="card-header bg-info text-white">
+                    Total Sale
+                </div>
+                <div class="card-body">
+                    <h3 class="my-4">
+                        <blockquote>
+                            <h3 class="my-4">{{total_sale}}</h3>
+                        </blockquote>
+                    </h3>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <!--End Table-->
+{% endblock %}
