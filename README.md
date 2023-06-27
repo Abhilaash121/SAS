@@ -1,2 +1,1 @@
-# SAS
-This is a Supermarket Automation Software (SAS), created using Django Framework. The aim of the project is to automate the inventory management system and billing system of a supermarket. The admin of the application is the manager, who has all the permissions like adding new products, verifying all the staff data, etc. The staff can make orders from the inventory whenever a customer needs it. The inventory management system keeps track of the product details, prices, details of all the staff, orders made by the staff, and the total sales. 
+
