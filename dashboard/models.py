@@ -24,6 +24,11 @@ class Product(models.Model):
 #what are these for
     def __str__(self):
         return f'{self.name}'
+    
+    def clean(self):
+        q=self.quantity
+        if q<=0:
+         raise ValidationError(('Enter a valid quantity'))
 
 class Order(models.Model):
     #since an order must be deleted when the product is deleted it's cascaded
@@ -44,5 +49,6 @@ class Order(models.Model):
         q=self.product.quantity
         if self.order_quantity > self.product.quantity:
          raise ValidationError(('Available quantity is %(max_value)s.'), params={'max_value': self.product.quantity})
-    
+        elif self.order_quantity<=0:
+            raise ValidationError('Enter a valid quantity')
     
