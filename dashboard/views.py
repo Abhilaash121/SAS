@@ -130,7 +130,7 @@ def product_update(request,key):  # for updating/editing the product details
 
 @login_required
 def order(request):
-    orders = Order.objects.all()
+    orders = Order.objects.all().order_by('-date')
     order_count = orders.count()
     product_count = Product.objects.all().count()
     worker_count= User.objects.all().count()
